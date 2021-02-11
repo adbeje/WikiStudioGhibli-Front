@@ -1,0 +1,71 @@
+body {
+  background-color: rgb(55, 154, 175) !important;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.151);
+  
+}
+
+.dropdown-toggle::after { 
+  content: none;
+}
+
+.root-main,
+.main {
+  flex: 100;
+}
+.root-child-header {
+  flex: 5;
+  background-color: transparent;
+}
+.main-footer {
+  flex: 2;
+  background-color: transparent;
+}
+
+.root {
+  max-width: 70em;
+}
+
+/*
+
+  Header
+
+*/
+
+.nav-masthead .nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/*
+  Links
+*/
+.link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.856);
+  background-color: transparent;
+  border-bottom: 0.25rem solid transparent;
+  margin-left: 1rem;
+}
+
+.fab, .fas{
+  color: white;
+}
