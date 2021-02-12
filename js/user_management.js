@@ -12,7 +12,9 @@ const signUpUser = (users, u) => {
 
       .then((response) => {
         console.log(response.data);
-        $("#navLogInBtn").text(`welcome ${u.username} (click to loggOut)`)
+        localStorage.setItem("username", u.username);
+        console.log(localStorage.getItem("username"));
+        $("#navLogInBtn").text(`welcome ${u.username} (click to loggOut)`);
         $("#signUpModal").modal("hide");
         $("#unameInpReg").val("");
         $("#upassInpReg").val("");
@@ -20,7 +22,7 @@ const signUpUser = (users, u) => {
       })
 
       .catch((err) => {
-          alert("ha habido un error con el servidor")
+        alert("ha habido un error con el servidor");
         console.log(err);
       });
   } else alert("Ya existe un usuario con ese username prueba con otro");
@@ -32,8 +34,9 @@ const logInUser = (users, u) => {
   if (!res) alert("parametros mal introducidos por favor intentelo de nuevo");
   else {
     if (res.pass === u.pass) {
-        $("#navLogInBtn").text(`welcome ${u.username} (click to loggOut)`)
-      //falta asignar un valor en la pantalla para que se vea que se ha iniciado sesion, pe sustituir el valor de logIn
+      $("#navLogInBtn").text(`welcome ${u.username} (click to loggOut)`);
+      localStorage.setItem("username", u.username);
+      console.log(localStorage.getItem("username"));
       $("#logInModal").modal("hide");
       $("#unameInpSign").val("");
       $("#upassInpSign").val("");
@@ -43,8 +46,8 @@ const logInUser = (users, u) => {
 };
 
 $(window).on("load", async () => {
-  if(user.name){
-    $("#navLogInBtn").text(`welcome ${u.username} (click to loggOut)`)
+  if (localStorage.getItem("username")) {
+    $("#navLogInBtn").text(`welcome ${localStorage.getItem("username")} (click to loggOut)`);
   }
   try {
     users = (
@@ -57,12 +60,13 @@ $(window).on("load", async () => {
 
   $("#navLogInBtn").on("click", async () => {
     var value = $("#navLogInBtn").text();
-    console.log(value)
-    if(value !== "LogIn") {
-        alert("se ha cerrado sesion correctamente")
-        $("#navLogInBtn").text("LogIn")
-    }else{
-        $("#logInModal").modal("toggle");
+    console.log(value);
+    if (value !== "LogIn") {
+      alert("se ha cerrado sesion correctamente");
+      $("#navLogInBtn").text("LogIn");
+      localStorage.clear();
+    } else {
+      $("#logInModal").modal("toggle");
     }
   });
 
