@@ -18,20 +18,20 @@ const signUpUser = (users, u) => {
         $("#signUpModal").modal("hide");
         $("#unameInpReg").val("");
         $("#upassInpReg").val("");
-        alert("se ha registrado correctamente");
+        alert("The user has been successfully registered!");
       })
 
       .catch((err) => {
-        alert("ha habido un error con el servidor");
+        alert("There has been an error with the server.");
         console.log(err);
       });
-  } else alert("Ya existe un usuario con ese username prueba con otro");
+  } else alert("There is already a user with that username, try another.");
 };
 
 const logInUser = (users, u) => {
   res = users.find((user) => user.username === u.username);
   console.log(res);
-  if (!res) alert("parametros mal introducidos por favor intentelo de nuevo");
+  if (!res) alert("Incorrectly entered parameters, please try again.");
   else {
     if (res.pass === u.pass) {
       $("#navLogInBtn").text(`welcome ${u.username} (click to loggOut)`);
@@ -40,8 +40,8 @@ const logInUser = (users, u) => {
       $("#logInModal").modal("hide");
       $("#unameInpSign").val("");
       $("#upassInpSign").val("");
-      alert("se ha iniciado sesion correctamente");
-    } else alert("la contrasenia es incorrecta");
+      alert("Successfully logged in!");
+    } else alert("Incorrect password.");
   }
 };
 
@@ -62,7 +62,7 @@ $(window).on("load", async () => {
     var value = $("#navLogInBtn").text();
     console.log(value);
     if (value !== "LogIn") {
-      alert("se ha cerrado sesion correctamente");
+      alert("Session has been successfully closed!");
       $("#navLogInBtn").text("LogIn");
       localStorage.clear();
     } else {
@@ -75,7 +75,7 @@ $(window).on("load", async () => {
     user.pass = $("#upassInpSign").val();
     console.log(user);
 
-    if (!(user.username && user.pass)) alert("rellena los parametros");
+    if (!(user.username && user.pass)) alert("Fill in the parameters.");
     else {
       logInUser(users, user);
     }
@@ -84,7 +84,7 @@ $(window).on("load", async () => {
   $("#registerBtn").on("click", async () => {
     user.username = $("#unameInpReg").val();
     user.pass = $("#upassInpReg").val();
-    if (!(user.username && user.pass)) alert("rellena los parametros");
+    if (!(user.username && user.pass)) alert("Fill in the parameters.");
     else {
       signUpUser(users, user);
     }
