@@ -69,3 +69,16 @@ body {
 .fab, .fas{
   color: white;
 }
+
+
+/* Imagenes */
+.img-car{
+  max-height: 300px;
+  width: auto;
+}
+@media screen and (max-width: 550px){
+.img-car{
+  max-height: 200px;
+  width: auto;
+}
+}
