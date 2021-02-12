@@ -1,3 +1,8 @@
+var user = {
+  username: "",
+  pass: "",
+};
+
 const signUpUser = (users, u) => {
   res = users.find((user) => user.username === u.username);
   console.log(res);
@@ -38,10 +43,9 @@ const logInUser = (users, u) => {
 };
 
 $(window).on("load", async () => {
-  var user = {
-    username: "",
-    pass: "",
-  };
+  if(user.name){
+    $("#navLogInBtn").text(`welcome ${u.username} (click to loggOut)`)
+  }
   try {
     users = (
       await axios.get("https://wiki-studioghibli-endpoint.herokuapp.com/users")
